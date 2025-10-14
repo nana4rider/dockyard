@@ -8,7 +8,7 @@
   "author": "nana4rider",
   "license": "UNLICENSED",
   "devDependencies": {
-    "dclint": "^2.2.2",
+    "dclint": "^3.1.0",
     "husky": "^9.1.7"
   }
 }
