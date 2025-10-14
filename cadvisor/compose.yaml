@@ -1,0 +1,30 @@
+services:
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.52.0
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+      - /etc/machine-id:/etc/machine-id:ro
+    ports:
+      - '8080:8080'
+    networks:
+      - common_network
+    command:
+      - --enable_metrics=cpu,memory,network # https://github.com/google/cadvisor/blob/master/docs/runtime_options.md
+    restart: always
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
+      - "diun.max_tags=1"
+    devices:
+      - "/dev/kmsg"
+    privileged: true
+
+networks:
+  common_network:
+    external: true

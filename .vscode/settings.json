@@ -1,0 +1,32 @@
+{
+  "files.insertFinalNewline": true,
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "compose\\.yaml$",
+        "cmd": "npx dclint '${file}' --fix"
+      }
+    ]
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[dockercompose]": {
+    "editor.formatOnSave": false
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-containers"
+  },
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[ignore]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  }
+}

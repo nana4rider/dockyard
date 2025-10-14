@@ -1,0 +1,16 @@
+services:
+  face-detector:
+    image: nana4rider/face-detector:latest
+    container_name: face-detector
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/face-detector/app.env
+    ports:
+      - '5000:5000'
+    networks:
+      - common_network
+    restart: always
+
+networks:
+  common_network:
+    external: true

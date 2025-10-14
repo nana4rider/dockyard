@@ -1,0 +1,42 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  lint:
+    uses: ./.github/workflows/lint.yml
+
+  deploy-webhook:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - env:
+          WEBHOOK_URL_BASE: ${{ secrets.WEBHOOK_URL_BASE }}
+          WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+        run: |
+          CHANGED_DIRS=($(git diff --name-only HEAD^ HEAD | xargs -I {} dirname {} | sort | uniq | grep -v '^\.' || true))
+
+          COUNTER=0
+          for SERVICE_NAME in "${CHANGED_DIRS[@]}"; do
+            if [ $COUNTER -ge 1 ]; then
+              sleep 10
+            fi
+
+            echo "deploy $SERVICE_NAME"
+            TIMESTAMP=$(date +%s)
+            SIGNATURE=$(echo -n "$TIMESTAMP" | openssl dgst -sha256 -hmac "$WEBHOOK_SECRET" | awk '{print $2}')
+            WEBHOOK_URL=$(printf "$WEBHOOK_URL_BASE" "$SERVICE_NAME")
+            curl -f -X POST "$WEBHOOK_URL" \
+                  -H "X-Signature: $SIGNATURE" \
+                  -H "X-Timestamp: $TIMESTAMP"
+
+            COUNTER=$((COUNTER + 1))
+          done

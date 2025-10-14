@@ -1,0 +1,17 @@
+services:
+  echonetlite2mqtt:
+    image: banban525/echonetlite2mqtt:v3.6.0
+    container_name: echonetlite2mqtt
+    volumes:
+      - ~/config/echonetlite2mqtt/config.json:/app/config/config.json:ro
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/common/mqtt.env
+      - ~/config/echonetlite2mqtt/app.env
+    network_mode: host
+    restart: always
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
+      - "diun.max_tags=1"

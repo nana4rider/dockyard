@@ -1,0 +1,25 @@
+services:
+  gollum:
+    image: gollumwiki/gollum:6.1.0
+    container_name: gollum
+    volumes:
+      - ~/repository/home-wiki:/wiki
+      - ~/.gitconfig:/home/www-data/.gitconfig:ro
+    env_file:
+      - ~/config/common/base.env
+    networks:
+      - common_network
+    command:
+      - "--ref=main"
+      - "--h1-title"
+      - "--emoji"
+    restart: always
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+      - "diun.include_tags=^\\d+\\.\\d+\\.\\d+$"
+      - "diun.max_tags=1"
+
+networks:
+  common_network:
+    external: true

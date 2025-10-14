@@ -1,0 +1,25 @@
+services:
+  loki:
+    image: grafana/loki:3.5.7
+    container_name: loki
+    volumes:
+      - ~/repository/monitoring/loki/loki.yml:/etc/loki/loki.yml:ro
+      - ~/data/loki:/loki
+    env_file:
+      - ~/config/common/base.env
+    ports:
+      - '3100:3100'
+    networks:
+      - common_network
+    command: -config.file=/etc/loki/loki.yml
+    restart: always
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+      - "diun.include_tags=^\\d+\\.\\d+\\.\\d+$"
+      - "diun.max_tags=1"
+    user: "1000:1000"
+
+networks:
+  common_network:
+    external: true

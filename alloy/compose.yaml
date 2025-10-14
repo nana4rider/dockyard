@@ -1,0 +1,32 @@
+services:
+  alloy:
+    image: grafana/alloy:v1.9.2
+    container_name: alloy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/machine-id:/etc/machine-id:ro
+      - /:/host:ro,rslave
+      - ~/repository/monitoring/alloy/config_manager.alloy:/etc/alloy/config.alloy
+      - ~/data/alloy:/var/lib/alloy/data
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/alloy/app.env
+    ports:
+      - '12345:12345'
+    networks:
+      - common_network
+    command:
+      - run
+      - --server.http.listen-addr=0.0.0.0:12345
+      - --storage.path=/var/lib/alloy/data
+      - /etc/alloy/config.alloy
+    restart: always
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
+      - "diun.max_tags=1"
+
+networks:
+  common_network:
+    external: true

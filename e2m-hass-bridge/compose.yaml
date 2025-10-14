@@ -1,0 +1,14 @@
+services:
+  e2m-hass-bridge:
+    image: nana4rider/e2m-hass-bridge:latest
+    container_name: e2m-hass-bridge
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/common/mqtt.env
+    networks:
+      - common_network
+    restart: always
+
+networks:
+  common_network:
+    external: true

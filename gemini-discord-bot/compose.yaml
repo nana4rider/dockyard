@@ -1,0 +1,15 @@
+services:
+  gemini-discord-bot:
+    build:
+      context: .
+    container_name: gemini-discord-bot
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/gemini-discord-bot/app.env
+    networks:
+      - common_network
+    restart: always
+
+networks:
+  common_network:
+    external: true

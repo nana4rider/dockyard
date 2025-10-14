@@ -1,0 +1,24 @@
+services:
+  blackbox-exporter:
+    image: prom/blackbox-exporter:v0.26.0
+    container_name: blackbox-exporter
+    env_file:
+      - ~/config/common/base.env
+    ports:
+      - '9115:9115'
+    networks:
+      - common_network
+    extra_hosts:
+      - echonetlite2mqtt:host-gateway
+      - pc2mqtt:host-gateway
+      - ring-face-recognition:host-gateway
+    restart: always
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
+      - "diun.max_tags=1"
+
+networks:
+  common_network:
+    external: true

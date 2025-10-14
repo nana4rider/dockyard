@@ -1,0 +1,29 @@
+services:
+  prometheus:
+    image: prom/prometheus:v3.6.0
+    container_name: prometheus
+    volumes:
+      - ~/data/prometheus:/prometheus/data
+    env_file:
+      - ~/config/common/base.env
+    ports:
+      - '9090:9090'
+    networks:
+      - common_network
+    command:
+      - "--config.file=/dev/null"
+      - "--storage.tsdb.retention.time=45d"
+      - "--web.external-url=http://prometheus.home:9090"
+      - "--web.enable-remote-write-receiver"
+      - "--web.enable-admin-api"
+    restart: always
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
+      - "diun.max_tags=1"
+    user: "1000:1000"
+
+networks:
+  common_network:
+    external: true

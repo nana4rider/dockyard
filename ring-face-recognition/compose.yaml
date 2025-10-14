@@ -1,0 +1,12 @@
+services:
+  ring-face-recognition:
+    image: nana4rider/ring-face-recognition:latest
+    container_name: ring-face-recognition
+    volumes:
+      - ~/data/ring-face-recognition/snapshot:/app/snapshot
+      - ~/data/ring-face-recognition/.refreshToken:/app/.refreshToken
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/ring-face-recognition/app.env
+    network_mode: host
+    restart: always

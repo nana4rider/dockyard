@@ -1,0 +1,20 @@
+services:
+  wisun2mqtt:
+    image: nana4rider/wisun2mqtt:latest
+    container_name: wisun2mqtt
+    volumes:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - ~/data/wisun2mqtt/.paninfo.json:/app/.paninfo.json
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/common/mqtt.env
+      - ~/config/wisun2mqtt/app.env
+    networks:
+      - common_network
+    restart: always
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+
+networks:
+  common_network:
+    external: true

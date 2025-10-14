@@ -1,0 +1,19 @@
+services:
+  deploy-webhook:
+    image: nana4rider/deploy-webhook:latest
+    container_name: deploy-webhook
+    volumes:
+      - ~/config/deploy-webhook/.ssh:/home/node/.ssh
+      - ~/repository/shellpot/deploy-webhook.sh:/app/deploy.sh:ro
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/deploy-webhook/app.env
+    networks:
+      - common_network
+    extra_hosts:
+      - deploy-target:host-gateway
+    restart: always
+
+networks:
+  common_network:
+    external: true

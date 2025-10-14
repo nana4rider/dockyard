@@ -1,0 +1,37 @@
+services:
+  nginx:
+    image: nginx:stable
+    container_name: nginx
+    volumes:
+      - ~/repository/nana4-net/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ~/repository/nana4-net/nginx/conf.d/proxy-headers.conf:/etc/nginx/conf.d/proxy-headers.conf:ro
+      - ~/repository/nana4-net/nginx/conf.d/upstreams.conf:/etc/nginx/conf.d/upstreams.conf:ro
+      - ~/repository/nana4-net/nginx/templates:/etc/nginx/templates:ro
+      - ~/repository/nana4-net/nginx/sites-enabled:/etc/nginx/sites-enabled:ro
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/nginx/app.env
+    networks:
+      - common_network
+    extra_hosts:
+      - authentik:host-gateway
+    restart: always
+    labels:
+      - "diun.enable=true"
+
+  nginx-prometheus-exporter:
+    image: nginx/nginx-prometheus-exporter:latest
+    container_name: nginx-prometheus-exporter
+    depends_on:
+      - nginx
+    networks:
+      - common_network
+    command:
+      - "--nginx.scrape-uri=http://nginx:9900/stub_status"
+    restart: always
+    labels:
+      - "diun.enable=true"
+
+networks:
+  common_network:
+    external: true

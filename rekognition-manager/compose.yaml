@@ -1,0 +1,17 @@
+services:
+  rekognition-manager:
+    build:
+      context: .
+    container_name: rekognition-manager
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/rekognition-manager/app.env
+    ports:
+      - '8000:8000'
+    networks:
+      - common_network
+    restart: always
+
+networks:
+  common_network:
+    external: true

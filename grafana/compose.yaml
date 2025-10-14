@@ -1,0 +1,26 @@
+services:
+  agrafanapp:
+    image: grafana/grafana:12.2.0
+    container_name: grafana
+    volumes:
+      - ~/repository/monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
+      - ~/data/grafana:/var/lib/grafana
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/grafana/app.env
+    ports:
+      - '3000:3000'
+    networks:
+      - common_network
+    restart: always
+    labels:
+      - "diun.enable=true"
+      - "diun.watch_repo=true"
+      - "diun.include_tags=^\\d{2,}\\.\\d+\\.\\d+$"
+      - "diun.max_tags=1"
+    # https://github.com/grafana/grafana/issues/63599
+    user: "1000:1000"
+
+networks:
+  common_network:
+    external: true

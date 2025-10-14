@@ -1,0 +1,14 @@
+{
+  "name": "dockyard",
+  "homepage": "https://github.com/nana4rider/dockyard",
+  "scripts": {
+    "lint": "dclint ./*/compose.yaml",
+    "lint:fix": "dclint ./*/compose.yaml --fix"
+  },
+  "author": "nana4rider",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "dclint": "^2.2.2",
+    "husky": "^9.1.7"
+  }
+}
