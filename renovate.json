@@ -8,5 +8,9 @@
       "matchManagers": ["dockerfile"],
       "enabled": false
     }
+  ],
+  "ignoreDeps": [
+    "postgres",
+    "redis"
   ]
 }
