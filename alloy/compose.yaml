@@ -1,6 +1,6 @@
 services:
   alloy:
-    image: grafana/alloy:v1.9.2
+    image: grafana/alloy:v1.11.2
     container_name: alloy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
