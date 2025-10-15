@@ -1,0 +1,8 @@
+repos:
+  - repo: local
+    hooks:
+      - id: dclint-check
+        name: dclint check
+        entry: npx dclint
+        language: system
+        files: compose\.yaml$
