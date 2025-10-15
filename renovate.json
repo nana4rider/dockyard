@@ -3,5 +3,10 @@
   "extends": [
     "config:recommended"
   ],
-  "ignoreManagers": ["dockerfile"]
+  "packageRules": [
+    {
+      "matchManagers": ["dockerfile"],
+      "enabled": false
+    }
+  ]
 }
