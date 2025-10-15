@@ -7,10 +7,16 @@
     {
       "matchManagers": ["dockerfile"],
       "enabled": false
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": [
+        "docker.io/library/postgres",
+        "postgres",
+        "docker.io/library/redis",
+        "redis"
+      ],
+      "enabled": false
     }
-  ],
-  "ignoreDeps": [
-    "postgres",
-    "redis"
   ]
 }
