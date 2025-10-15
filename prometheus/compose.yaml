@@ -17,11 +17,6 @@ services:
       - "--web.enable-remote-write-receiver"
       - "--web.enable-admin-api"
     restart: always
-    labels:
-      - "diun.enable=true"
-      - "diun.watch_repo=true"
-      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
-      - "diun.max_tags=1"
     user: "1000:1000"
 
 networks:

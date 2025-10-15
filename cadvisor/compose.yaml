@@ -16,11 +16,6 @@ services:
     command:
       - --enable_metrics=cpu,memory,network # https://github.com/google/cadvisor/blob/master/docs/runtime_options.md
     restart: always
-    labels:
-      - "diun.enable=true"
-      - "diun.watch_repo=true"
-      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
-      - "diun.max_tags=1"
     devices:
       - "/dev/kmsg"
     privileged: true

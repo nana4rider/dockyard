@@ -10,8 +10,3 @@ services:
       - ~/config/echonetlite2mqtt/app.env
     network_mode: host
     restart: always
-    labels:
-      - "diun.enable=true"
-      - "diun.watch_repo=true"
-      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
-      - "diun.max_tags=1"

@@ -46,11 +46,6 @@ services:
       - '9443:9443'
     command: server
     restart: always
-    labels:
-      - "diun.enable=true"
-      - "diun.watch_repo=true"
-      - "diun.include_tags=^\\d+\\.\\d+\\.\\d+$"
-      - "diun.max_tags=1"
 
   worker:
     image: *authentik_image

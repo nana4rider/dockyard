@@ -21,11 +21,6 @@ services:
       - --storage.path=/var/lib/alloy/data
       - /etc/alloy/config.alloy
     restart: always
-    labels:
-      - "diun.enable=true"
-      - "diun.watch_repo=true"
-      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
-      - "diun.max_tags=1"
 
 networks:
   common_network:

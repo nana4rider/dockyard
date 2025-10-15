@@ -13,11 +13,6 @@ services:
       - pc2mqtt:host-gateway
       - ring-face-recognition:host-gateway
     restart: always
-    labels:
-      - "diun.enable=true"
-      - "diun.watch_repo=true"
-      - "diun.include_tags=^v\\d+\\.\\d+\\.\\d+$"
-      - "diun.max_tags=1"
 
 networks:
   common_network:

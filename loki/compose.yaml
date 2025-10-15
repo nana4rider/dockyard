@@ -13,11 +13,6 @@ services:
       - common_network
     command: -config.file=/etc/loki/loki.yml
     restart: always
-    labels:
-      - "diun.enable=true"
-      - "diun.watch_repo=true"
-      - "diun.include_tags=^\\d+\\.\\d+\\.\\d+$"
-      - "diun.max_tags=1"
     user: "1000:1000"
 
 networks:

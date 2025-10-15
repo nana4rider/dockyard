@@ -13,11 +13,6 @@ services:
     networks:
       - common_network
     restart: always
-    labels:
-      - "diun.enable=true"
-      - "diun.watch_repo=true"
-      - "diun.include_tags=^\\d{2,}\\.\\d+\\.\\d+$"
-      - "diun.max_tags=1"
     # https://github.com/grafana/grafana/issues/63599
     user: "1000:1000"
 
