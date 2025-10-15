@@ -30,7 +30,7 @@ services:
     user: "1000:1000"
 
   server:
-    image: &authentik_image ghcr.io/goauthentik/server:2025.8.4
+    image: &authentik_image ghcr.io/goauthentik/server:2025.8.3
     depends_on:
       postgresql:
         condition: service_healthy
