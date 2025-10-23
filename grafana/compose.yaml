@@ -1,6 +1,6 @@
 services:
   agrafanapp:
-    image: grafana/grafana:12.2.0
+    image: grafana/grafana:12.2.1
     container_name: grafana
     volumes:
       - ~/repository/monitoring/grafana/grafana.ini:/etc/grafana/grafana.ini
