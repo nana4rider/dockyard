@@ -12,7 +12,7 @@ services:
       - common_network
     command:
       - "--config.file=/dev/null"
-      - "--storage.tsdb.retention.time=45d"
+      - "--storage.tsdb.retention.time=1w"
       - "--web.external-url=http://prometheus.home:9090"
       - "--web.enable-remote-write-receiver"
       - "--web.enable-admin-api"
