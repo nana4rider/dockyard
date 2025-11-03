@@ -12,8 +12,6 @@ services:
       - ~/config/nginx/app.env
     networks:
       - common_network
-    extra_hosts:
-      - authentik:host-gateway
     restart: always
 
   nginx-prometheus-exporter:
