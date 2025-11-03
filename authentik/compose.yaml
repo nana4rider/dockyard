@@ -42,8 +42,9 @@ services:
       - ~/data/authentik/custom-templates:/templates
     env_file:
       - ~/config/authentik/app.env
-    ports:
-      - '9443:9443'
+    networks:
+      - default
+      - common_network
     command: server
     restart: always
 
@@ -62,3 +63,8 @@ services:
       - ~/config/authentik/app.env
     command: worker
     restart: always
+
+networks:
+  default:
+  common_network:
+    external: true
