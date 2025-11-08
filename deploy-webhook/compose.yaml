@@ -1,6 +1,6 @@
 services:
   deploy-webhook:
-    image: nana4rider/deploy-webhook:latest
+    image: ghcr.io/nana4rider/deploy-webhook:latest
     container_name: deploy-webhook
     volumes:
       - ~/config/deploy-webhook/.ssh:/home/node/.ssh

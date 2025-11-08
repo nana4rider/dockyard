@@ -1,6 +1,6 @@
 services:
   face-detector:
-    image: nana4rider/face-detector:latest
+    image: ghcr.io/nana4rider/face-detector:latest
     container_name: face-detector
     env_file:
       - ~/config/common/base.env

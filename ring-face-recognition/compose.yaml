@@ -1,6 +1,6 @@
 services:
   ring-face-recognition:
-    image: nana4rider/ring-face-recognition:latest
+    image: ghcr.io/nana4rider/ring-face-recognition:latest
     container_name: ring-face-recognition
     volumes:
       - ~/data/ring-face-recognition/snapshot:/app/snapshot
