@@ -9,7 +9,6 @@ services:
     networks:
       - common_network
     extra_hosts:
-      - echonetlite2mqtt:host-gateway
       - pc2mqtt:host-gateway
       - ring-face-recognition:host-gateway
     restart: always
