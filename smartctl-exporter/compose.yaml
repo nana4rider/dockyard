@@ -1,6 +1,6 @@
 services:
   smartctl-exporter:
-    image: ghcr.io/joryirving/smartctl_exporter:v0.14.0
+    image: ghcr.io/joryirving/smartctl_exporter:0.14.0
     container_name: smartctl-exporter
     env_file:
       - ~/config/common/base.env
