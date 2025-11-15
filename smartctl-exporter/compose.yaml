@@ -1,6 +1,6 @@
 services:
   smartctl-exporter:
-    image: ghcr.io/joryirving/smartctl_exporter:0.14.0
+    image: ghcr.io/joryirving/smartctl_exporter:0.14.0 # https://github.com/prometheus-community/smartctl_exporter/issues/105
     container_name: smartctl-exporter
     env_file:
       - ~/config/common/base.env
