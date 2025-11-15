@@ -5,7 +5,7 @@ services:
     env_file:
       - ~/config/common/base.env
     ports:
-      - '9663:9663'
+      - '9633:9633'
     networks:
       - common_network
     restart: always
