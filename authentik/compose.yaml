@@ -40,7 +40,6 @@ services:
       redis:
         condition: service_healthy
     volumes:
-      - ~/repository/nana4-net/authentik/assets:/web/dist/assets/custom
       - ~/data/authentik/media:/media
       - ~/data/authentik/custom-templates:/templates
     env_file:
