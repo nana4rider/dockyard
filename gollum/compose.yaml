@@ -7,6 +7,8 @@ services:
       - ~/.gitconfig:/home/www-data/.gitconfig:ro
     env_file:
       - ~/config/common/base.env
+    ports:
+      - '4567:4567'
     networks:
       - common_network
     command:
