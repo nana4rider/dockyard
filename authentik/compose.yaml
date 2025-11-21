@@ -64,6 +64,9 @@ services:
       - ~/data/authentik/custom-templates:/templates
     env_file:
       - ~/config/authentik/app.env
+    networks:
+      - default
+      - common_network
     command: worker
     restart: always
 
