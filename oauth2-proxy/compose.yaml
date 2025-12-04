@@ -8,6 +8,7 @@ services:
       - common_network
     command: --config /oauth2-proxy.cfg
     restart: always
+    user: "1000:1000"
 
 networks:
   common_network:
