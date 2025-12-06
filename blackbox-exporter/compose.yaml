@@ -1,6 +1,6 @@
 services:
   blackbox-exporter:
-    image: prom/blackbox-exporter:v0.27.0
+    image: prom/blackbox-exporter:v0.28.0
     container_name: blackbox-exporter
     env_file:
       - ~/config/common/base.env
