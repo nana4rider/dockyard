@@ -1,0 +1,16 @@
+services:
+  mosquitto-exporter:
+    image: sapcc/mosquitto-exporter:0.8.0
+    container_name: mosquitto-exporter
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/mosquitto-exporter/app.env
+    ports:
+      - '9234:9234'
+    networks:
+      - common_network
+    restart: always
+
+networks:
+  common_network:
+    external: true
