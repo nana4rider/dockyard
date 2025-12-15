@@ -8,8 +8,6 @@ services:
       - '9115:9115'
     networks:
       - common_network
-    extra_hosts:
-      - ring-face-recognition:host-gateway
     restart: always
 
 networks:
