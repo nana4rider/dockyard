@@ -1,0 +1,16 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:2.33.6
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/data/portainer:/data
+    env_file:
+      - ~/config/common/base.env
+    networks:
+      - common_network
+    restart: always
+
+networks:
+  common_network:
+    external: true
