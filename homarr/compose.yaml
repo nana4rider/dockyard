@@ -1,0 +1,17 @@
+services:
+  homarr:
+    image: ghcr.io/homarr-labs/homarr:v1.47.0
+    container_name: homarr
+    volumes:
+      - ~/data/homarr:/appdata
+      - /var/run/docker.sock:/var/run/docker.sock
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/homarr/app.env
+    networks:
+      - common_network
+    restart: always
+
+networks:
+  common_network:
+    external: true
