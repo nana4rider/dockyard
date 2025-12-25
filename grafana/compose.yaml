@@ -1,5 +1,5 @@
 services:
-  agrafanapp:
+  grafana:
     image: grafana/grafana:12.3.1
     container_name: grafana
     volumes:
