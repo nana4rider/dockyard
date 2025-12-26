@@ -4,7 +4,6 @@ services:
     container_name: homarr
     volumes:
       - ~/data/homarr:/appdata
-      - /var/run/docker.sock:/var/run/docker.sock
     env_file:
       - ~/config/common/base.env
       - ~/config/homarr/app.env
