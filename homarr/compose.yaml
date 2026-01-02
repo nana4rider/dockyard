@@ -1,6 +1,6 @@
 services:
   homarr:
-    image: ghcr.io/homarr-labs/homarr:v1.48.0
+    image: ghcr.io/homarr-labs/homarr:v1.49.0
     container_name: homarr
     volumes:
       - ~/data/homarr:/appdata
