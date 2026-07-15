@@ -8,6 +8,7 @@ services:
     env_file:
       - ~/config/common/base.env
       - ~/config/rekognition-manager/app.env
+    restart: always
     healthcheck:
       test: [ 'CMD', 'wget', '--quiet', '--tries=1', '--spider', 'http://127.0.0.1:3001/health' ]
       interval: 10s
@@ -24,6 +25,7 @@ services:
       BFF_ORIGIN: http://bff:3001
     ports:
       - '3200:3000'
+    restart: always
 
 networks:
   common_network:
