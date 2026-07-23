@@ -2,9 +2,6 @@ services:
   bff:
     image: ghcr.io/nana4rider/rekognition-manager/bff:latest
     container_name: rekognition-manager-bff
-    environment:
-      NODE_ENV: production
-      PORT: 3001
     env_file:
       - ~/config/common/base.env
       - ~/config/rekognition-manager/app.env
@@ -23,10 +20,6 @@ services:
     depends_on:
       bff:
         condition: service_healthy
-    environment:
-      BFF_ORIGIN: http://bff:3001
-    ports:
-      - '3200:3000'
     networks:
       - common_network
     restart: always
