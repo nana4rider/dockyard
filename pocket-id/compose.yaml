@@ -1,6 +1,6 @@
 services:
   pocket-id:
-    image: ghcr.io/pocket-id/pocket-id:v2.11
+    image: ghcr.io/pocket-id/pocket-id:v2.12
     container_name: pocket-id
     volumes:
       - ~/data/pocket-id:/app/data
