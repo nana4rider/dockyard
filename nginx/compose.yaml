@@ -15,7 +15,7 @@ services:
     restart: always
 
   nginx-prometheus-exporter:
-    image: nginx/nginx-prometheus-exporter:1.5.1
+    image: nginx/nginx-prometheus-exporter:1.5.3
     container_name: nginx-prometheus-exporter
     depends_on:
       - nginx
