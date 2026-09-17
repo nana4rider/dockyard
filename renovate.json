@@ -19,7 +19,7 @@
       "matchManagers": ["docker-compose"],
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor"],
-      "minimumReleaseAge": " days",
+      "minimumReleaseAge": "1 days",
       "matchCurrentVersion": "!/^v?0\\./",
       "automerge": true,
       "automergeType": "pr"
