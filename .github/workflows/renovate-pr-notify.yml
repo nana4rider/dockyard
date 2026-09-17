@@ -8,13 +8,14 @@ on:
 
 jobs:
   notify:
+    if: github.event.pull_request.user.login == 'renovate[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Send Discord Notification
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          title: "📦 Renovate が新しい PR を作成しました"
+          title: "📦 New PR Created by Renovate"
           description: |
-            **タイトル:** ${{ github.event.pull_request.title }}
+            **Title:** ${{ github.event.pull_request.title }}
             **URL:** ${{ github.event.pull_request.html_url }}
