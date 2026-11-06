@@ -1,6 +1,6 @@
 services:
   mosquitto-exporter:
-    image: jryberg/mosquitto-exporter:v0.7.9
+    image: jryberg/mosquitto-exporter:v0.8.1
     container_name: mosquitto-exporter
     env_file:
       - ~/config/common/base.env
