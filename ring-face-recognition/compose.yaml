@@ -1,12 +1,11 @@
 services:
-  ring-face-recognition:
-    image: ghcr.io/nana4rider/ring-face-recognition:latest
-    container_name: ring-face-recognition
+  mjpeg-face-recognition:
+    image: ghcr.io/nana4rider/mjpeg-face-recognition:latest
+    container_name: mjpeg-face-recognition
     volumes:
-      - ~/data/ring-face-recognition/snapshot:/app/snapshot
-      - ~/data/ring-face-recognition/.refreshToken:/app/.refreshToken
+      - ~/data/mjpeg-face-recognition/snapshot:/app/snapshot
     env_file:
       - ~/config/common/base.env
-      - ~/config/ring-face-recognition/app.env
+      - ~/config/mjpeg-face-recognition/app.env
     network_mode: host
     restart: always
