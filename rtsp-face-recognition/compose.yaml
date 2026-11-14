@@ -3,7 +3,7 @@ services:
     image: ghcr.io/nana4rider/rtsp-face-recognition:latest
     container_name: rtsp-face-recognition
     volumes:
-      - ~/data/rtsp-face-recognition/snapshot:/app/snapshot
+      - /mnt/backup/debug/rtsp-face-recognition-snapshot:/app/snapshot
     env_file:
       - ~/config/common/base.env
       - ~/config/rtsp-face-recognition/app.env
