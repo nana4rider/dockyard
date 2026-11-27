@@ -23,6 +23,12 @@
       "matchCurrentVersion": "!/^v?0\\./",
       "automerge": true,
       "automergeType": "pr"
+    },
+    {
+      "matchFileNames": ["wikijs/compose.yaml"],
+      "matchPackageNames": ["postgres"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
     }
   ]
 }
