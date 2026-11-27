@@ -1,0 +1,27 @@
+services:
+  wikijs:
+    image: ghcr.io/requarks/wiki:3.6.1
+    depends_on:
+      - wikijs-db
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/wikijs/app.env
+    ports:
+      - '80:3001'
+    networks:
+      - default
+      - common_network
+    restart: always
+
+  wikijs-db:
+    image: postgres:18.7
+    volumes:
+      - ~/data/wikijs/postgresql:/var/lib/postgresql
+    env_file:
+      - ~/config/common/base.env
+      - ~/config/wikijs/db.env
+    restart: always
+
+networks:
+  common_network:
+    external: true
