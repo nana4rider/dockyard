@@ -5,8 +5,6 @@ services:
     env_file:
       - ~/config/common/base.env
       - ~/config/rekognition-manager/app.env
-    networks:
-      - common_network
     restart: always
     healthcheck:
       test: [ 'CMD', 'wget', '--quiet', '--tries=1', '--spider', 'http://127.0.0.1:3001/health' ]
@@ -21,6 +19,7 @@ services:
       bff:
         condition: service_healthy
     networks:
+      - default
       - common_network
     restart: always
 
