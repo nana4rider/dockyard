@@ -14,7 +14,7 @@ services:
     restart: always
 
   wikijs-db:
-    image: postgres:18.7
+    image: postgres:19.0
     volumes:
       - ~/data/wikijs/postgresql:/var/lib/postgresql
     env_file:
