@@ -7,7 +7,7 @@ services:
       - ~/config/common/base.env
       - ~/config/wikijs/app.env
     ports:
-      - '80:3001'
+      - '80:7777'
     networks:
       - default
       - common_network
