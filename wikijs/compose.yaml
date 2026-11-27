@@ -8,11 +8,12 @@ services:
       - ~/config/common/base.env
       - ~/config/wikijs/app.env
     ports:
-      - '80:7777'
+      - '7777:3000'
     networks:
       - default
       - common_network
     restart: always
+    user: "1000:1000"
 
   db:
     image: postgres:18.7
