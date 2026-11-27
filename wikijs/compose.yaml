@@ -4,11 +4,11 @@ services:
     container_name: wikijs
     depends_on:
       - db
+    volumes:
+      - ~/config/wikijs/.ssh/id_ed25519:/wiki/private.key:ro
     env_file:
       - ~/config/common/base.env
       - ~/config/wikijs/app.env
-    ports:
-      - '7777:3000'
     networks:
       - default
       - common_network
