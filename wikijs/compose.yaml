@@ -15,7 +15,7 @@ services:
     restart: always
 
   db:
-    image: postgres:18.7
+    image: postgres:19.0
     container_name: wikijs-db
     volumes:
       - ~/data/wikijs/postgresql:/var/lib/postgresql
